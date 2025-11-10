@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel | Midnight Motors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 2% 20px 2%;
+    }
+
+    .hero img {
+      max-width: 80%;
+      width: auto;
+      max-height: 600px;
+      border-radius: 15px;
+      border: 5px solid #C2F9BB;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    /* Admin Container */
+    .adminContainer {
+      width: 80%;
+      height: 100px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Box */
+    .adminSection {
+      background-color: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      border: 2px solid #C2F9BB;
+      border-left: none;
+      border-right: none;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(194,249,187,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .adminSection h2 {
+      color: #C2F9BB;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .imageBox{
+      background-color: #000;
+      height: 200px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .form-group label {
+      width: 150px;
+      color: #C2F9BB;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      flex: 1;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      max-width: 1000px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+      font-size: 1rem;
+      transition: box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      width: 80%;
+      box-shadow: 0 0 15px #C2F9BB;
+      border-color: #C2F9BB;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      background-color: #C2F9BB;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #C2F9BB;
+    }
+
+    /* Preview Lists */
+    .list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-height: 500px; /* increased from 400px */
+      overflow-y: auto;
+    }
+
+    .list-item {
+      background-color: #111;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 350px; /* increased from 250px */
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: box-shadow 0.3s;
+      animation: fadeSlideUp 0.5s ease forwards;
+      position: relative;
+    }
+
+    .list-item:hover {
+      box-shadow: 0 0 20px rgba(194,249,187,0.5);
+    }
+
+    .list-item img {
+      width: 100%;
+      height: 250px; /* increased from 150px */
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    .list-item strong {
+      color: #C2F9BB;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Delete Button */
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: #ff4d4d;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .delete-btn:hover {
+      background-color: #e60000;
+    }
+
+    .uploadBox {
+      width: 100%;
+      max-width: 80%;
+      height: 200px;
+      border: 2px dashed rgba(255,255,255,0.1);
+      border-radius: 10px;
+      background: #111;
+      color: #C2F9BB;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .uploadBox:hover {
+      background: rgba(194,249,187,0.05);
+      border: 2px solid #C2F9BB;
+      transform: scale(1.02);
+    }
+
+    .uploadBox span {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .uploadBox p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .redirectBox {
+      cursor: pointer;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .redirectBox:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(194,249,187,0.4);
+    }
+
+    .redirectBox p {
+      color: #aaa;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero">
+    <img src="/Project/Images/Midnight.png" alt="Admin Panel Hero">
+  </div>
+
+  <!-- Admin Container -->
+  <div class="adminContainer">
+    <div class="adminSection redirectBox" onclick="location.href='brand.html'">
+      <h2>Manage Brands</h2>
+      <p>Click here to add, view, or delete car brands.</p>
+    </div>
+    <div class="adminSection redirectBox" onclick="location.href='model.html'">
+      <h2>Manage Models</h2>
+      <p>Click here to manage car models under each brand.</p>
+    </div>
+  </div>
+
+</body>
+</html>

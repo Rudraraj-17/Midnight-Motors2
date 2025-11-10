@@ -1,0 +1,289 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+.logo-container h1 {
+    font-family: 'Oswald', sans-serif;
+    color: #C2F9BB;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.cta-button {
+    background-color: #C2F9BB;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.cta-button:hover {
+    background-color: #A3E9A2;
+}
+
+#searchBar {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 25px;
+    background-color: #111;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    height: 38px;
+    line-height: 38px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+#searchBar::placeholder {
+    color: #bbb;
+}
+#searchBar:focus {
+    background-color: #222;
+    box-shadow: 0 0 8px #C2F9BB;
+}
+.navigation ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+.navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
+.navigation ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background-color: #C2F9BB;
+    transition: 0.3s;
+}
+.navigation ul li a:hover {
+    color: #C2F9BB;
+}
+.navigation ul li a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 2% 20px 2%;
+    overflow: visible;
+}
+
+.midnight {
+    font-family: 'Oswald', sans-serif;
+    font-size: 300px;
+    background: linear-gradient(to bottom, #323232, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.motors {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    margin-top: 30%;
+    z-index: 2;
+    transition: transform 0.3s, text-shadow 0.3s, color 1s;
+}
+.motors:hover {
+    transform: scale(1.1);
+    color: #ffffff;
+    text-shadow: 0 0 10px #dfffdb, 0 0 20px #C2F9BB;
+}
+
+.car-image {
+    width: 60%;
+    max-width: 800px;
+    margin-top: 2rem;
+    transition: transform 0.5s;
+}
+.car-image:hover {
+    transform: scale(1.05);
+}
+
+.info-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 5%;
+}
+.info-section img {
+    width: 500px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.info-text {
+    max-width: 60%;
+    text-align: right;
+    margin-left: auto;
+}
+.info-text h1 {
+    margin: 0 0 1rem 0;
+    font-size: 7rem;
+    color: #C2F9BB;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, background 1s ease;
+    background: linear-gradient(45deg, #bcffb3, #A3E9A2);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.info-text p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ddd;
+}
+.info-text h1:hover {
+    transform: scale(1.05);
+    animation: smoothWave 5s infinite alternate;
+}
+@keyframes smoothWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.info-text h1:hover::after {
+    width: 100%;
+}
+
+.cars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 2rem 5%;
+    text-decoration: none;
+}
+.car-item {
+    position: relative;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+.car-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+.car-item:hover img {
+    transform: scale(1.1);
+}
+.car-details {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.car-item:hover .car-details {
+    opacity: 1;
+    pointer-events: auto;
+}
+.car-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: #C2F9BB;
+}
+.car-details p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #ddd;
+}
+.cars a {
+    text-decoration: none;   
+    color: inherit;          
+}
+
+.scroll-element {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.scroll-element.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1200px) {
+    .info-text h1 { font-size: 5rem; }
+    .info-text { max-width: 70%; }
+    .car-item { width: 150px; }
+    .car-item img { height: 200px; }
+}
+@media (max-width: 992px) {
+    .info-section { flex-direction: column; text-align: center; }
+    .info-text { max-width: 100%; margin: 1rem 0 0 0; }
+    .info-text h1 { font-size: 3.5rem; }
+    .info-text p { font-size: 1rem; }
+    .cars { gap: 20px; }
+    .car-item { width: 140px; }
+    .car-item img { height: 180px; }
+}
+@media (max-width: 768px) {
+    .navigation ul { flex-direction: column; gap: 1rem; }
+    .hero { padding: 40px 2% 10px 2%; }
+    .midnight { font-size: 150px; }
+    .motors { font-size: 2.5rem; }
+    .info-text h1 { font-size: 2.5rem; }
+    .info-text p { font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+    .midnight { font-size: 100px; }
+    .motors { font-size: 2rem; }
+    .info-text h1 { font-size: 2rem; }
+    .info-text p { font-size: 0.85rem; }
+    .car-item { width: 100px; }
+    .car-item img { height: 120px; }
+    .info-section img { width: 80%; }
+}
+footer a:hover { color: #ffffff; }

@@ -1,0 +1,336 @@
+/* Reset and Base Styles */
+*, *::before, *::after {
+            box-sizing: border-box;
+        }
+        /* HTML and Body Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        /* Navigation Styles */
+        .navigation {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            padding: 1rem 0;
+            backdrop-filter: blur(5px);
+        }
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .navigation ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -5px;
+            background-color: #C2F9BB;
+            transition: 0.3s;
+        }
+
+        .navigation ul li a:hover {
+            color: #C2F9BB;
+        }
+
+        .navigation ul li a:hover::after {
+            width: 100%;
+        }
+      /* Hero Section Styles */
+      .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 5%;
+            margin-top: 150px;
+        }
+
+        .hero-section img {
+            width: 600px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .info-text {
+            max-width: 60%;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .info-text h1 {
+            margin: 0 0 1rem 0;
+            font-size: 10rem;
+            color: #C2F9BB;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, background 1s ease;
+            background: linear-gradient(45deg, #bcffb3, #A3E9A2);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-text h3 {
+            margin: 0;
+            font-size: 4rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .info-text h1:hover {
+            transform: scale(1.05);
+            animation: smoothWave 5s infinite alternate; 
+        }
+
+        @keyframes smoothWave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .info-text h1:hover::after {
+            width: 100%;
+        }
+
+        /* About Section Styles */
+        .about-section {
+            width: 70%;
+            align-items: center;
+            padding: 2rem 5%;
+            margin-top: 2rem;
+            border-radius: 30px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #C2F9BB;
+        }
+        .about-section p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #eee;
+        }
+        /* Qualification Section Styles */
+        .Qualification {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            width: 100%;
+            align-items: flex-start;
+        }
+        .Qualification .Darshan,
+        .Qualification .Marwadi {
+            text-align: center;
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 300px;
+            height: 550px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .Qualification h2 {
+            font-size: 1.5rem;
+            color: #C2F9BB;
+        }
+        .Qualification .Darshan:hover,
+        .Qualification .Marwadi:hover {
+            transform: translateY(-5px);
+        }
+        .Qualification .Darshan img,
+        .Qualification .Marwadi img {
+            margin-bottom: 1rem;
+        }
+        .Qualification img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+        .Qualification p {
+            margin: 0.5rem 0;
+        }
+        /* Projects Section Styles */
+        .projects {
+            width: 70%;
+            margin: 2rem auto;
+            padding-top: 15px;
+            text-align: center;
+        }
+        .projects h1{
+            font-size: 4rem;
+            color: #C2F9BB;
+            text-decoration: underline;
+        }
+        .project-card {
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+        }
+        .project-card h2 {
+            color: #C2F9BB;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-card p {
+            color: #eee;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        /* Website About Section Styles */
+        .website-about {
+            width: 70%;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+        }
+        .website-about h2 {
+            color: #C2F9BB;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .website-about p {
+            color: #eee;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        /* Scroll Animation Styles */
+        .scroll-element {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .scroll-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section, .about-section, .Qualification, .projects, .website-about, .contact {
+            margin-top: 3rem;
+        }
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1rem 2rem;
+                margin-top: 100px;
+            }
+            .hero-section img {
+                width: 80%;
+                height: auto;
+                margin-bottom: 1rem;
+            }
+            .info-text h1 {
+                font-size: 15vw;
+            }
+            .info-text h3 {
+                font-size: 2rem;
+            }
+            .about-section, .website-about, .projects {
+                width: 90%;
+                padding: 1rem 1.5rem;
+            }
+            .Qualification {
+                flex-direction: column;
+                align-items: center;
+            }
+            .Qualification .Darshan, .Qualification .Marwadi {
+                width: 80%;
+                height: auto;
+                margin-bottom: 1.5rem;
+            }
+            .project-card {
+                width: 90%;
+            }
+            .about-section h1, .website-about h2, .projects h1, .project-card h2 {
+                font-size: 1.8rem;
+            }
+            .about-section p, .website-about p, .project-card p, .Qualification p {
+                font-size: 1rem;
+            }
+        }
+        /* Footer Styles */
+        /* Footer Styles */
+        footer {
+            background-color: #111;
+            padding: 1.5rem 5%;
+            text-align: center;
+            color: #aaa;
+            border-top: 1px solid #333;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer span {
+            color: #C2F9BB;
+            font-size: 1rem;
+        }
+
+        footer a {
+            margin: 0 0.5rem;
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #C2F9BB;
+        }

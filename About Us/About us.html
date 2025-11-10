@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Midnight Motors</title>
+    <style>
+        /* ===== Reset and Base Styles ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===== Navigation ===== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.7);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+        .navigation ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .navigation ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .navigation ul li a:hover { color: #C2F9BB; }
+        .navigation ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 2px;
+            width: 0;
+            background-color: #C2F9BB;
+            transition: 0.3s;
+        }
+        .navigation ul li a:hover::after { width: 100%; }
+
+        /* ===== Hero Section ===== */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 5%;
+            margin-top: 150px;
+        }
+        .hero-section img {
+            width: 600px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .hero-section img:hover {
+            transform: scale(1.05);
+        }
+        .info-text {
+            text-align: right;
+        }
+        .info-text h3 {
+            color: #ddd;
+            font-size: 3rem;
+        }
+        .info-text h1 {
+            font-size: 6rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #bcffb3, #A3E9A2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            transition: transform 0.3s ease;
+        }
+        .info-text h1:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== About Section ===== */
+        .about-section {
+            width: 70%;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        .about-section h1 {
+            color: #C2F9BB;
+            font-size: 3rem;
+        }
+        .about-section p {
+            font-size: 1.3rem;
+            color: #eee;
+            line-height: 1.6;
+        }
+
+        /* ===== Mission and Vision ===== */
+        .mission-vision {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            width: 80%;
+            margin: 3rem auto;
+        }
+        .mission, .vision {
+            width: 45%;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(194,249,187,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .mission:hover, .vision:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(194,249,187,0.4);
+        }
+        .mission h2, .vision h2 {
+            color: #C2F9BB;
+        }
+
+        /* ===== Legacy Section ===== */
+        .legacy-section {
+            width: 70%;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        .legacy-section h2 {
+            color: #C2F9BB;
+            font-size: 2.5rem;
+        }
+        .legacy-section p {
+            color: #ddd;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* ===== Team Section ===== */
+        .team-section {
+            width: 80%;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        .team-section h2 {
+            color: #C2F9BB;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .team-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(194,249,187,0.2);
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(194,249,187,0.5);
+        }
+        .team-card img {
+            width: 200px;
+            border-radius: 30%;
+            margin-bottom: 1rem;
+        }
+        .team-card h3 {
+            color: #C2F9BB;
+            margin: 0.5rem 0;
+        }
+        .team-card p {
+            color: #bbb;
+            font-size: 1rem;
+        }
+
+        /* ===== Scroll Animation ===== */
+        .scroll-element {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background-color: #111;
+            padding: 1.5rem 5%;
+            text-align: center;
+            color: #aaa;
+            border-top: 1px solid #333;
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
+        }
+        footer span {
+            color: #C2F9BB;
+        }
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #C2F9BB;
+        }
+
+        /* ===== Responsive ===== */
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-top: 100px;
+            }
+            .hero-section img {
+                width: 80%;
+            }
+            .info-text h1 {
+                font-size: 12vw;
+            }
+            .mission-vision {
+                flex-direction: column;
+                align-items: center;
+            }
+            .mission, .vision {
+                width: 80%;
+            }
+            .team-card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Navigation ===== -->
+    <nav class="navigation">
+        <ul>
+            <li><a href="/Project/HOME page/home page.html">Home</a></li>
+            <li><a href="/Project/About Us/About us.html">About Us</a></li>
+            <li><a href="/Project/News/Trends/News-Trends.html">News/Trends</a></li>
+            <li><a href="/Project/Devloper detail page/devloper detail.html">Developer Details</a></li>
+            <li><a href="/Project/Login-Registration/Login.html">Login / Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== Hero Section ===== -->
+    <div class="hero-section scroll-element">
+        <img src="/Project/Images/Midnight.png" alt="Midnight Motors">
+        <div class="info-text">
+            <h3>Welcome to</h3>
+            <h1>Midnight Motors</h1>
+        </div>
+    </div>
+
+    <!-- ===== About Section ===== -->
+    <section class="about-section scroll-element">
+        <h1>About Our Brand</h1>
+        <p>
+            Midnight Motors is more than just a car brand — it’s a vision of power, performance, and passion. 
+            We aim to blend cutting-edge technology with stunning design, creating vehicles that redefine the driving experience.
+        </p>
+    </section>
+
+    <!-- ===== Mission & Vision ===== -->
+    <section class="mission-vision scroll-element">
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>To create vehicles that deliver unmatched performance, elegance, and sustainability while keeping the spirit of adventure alive in every drive.</p>
+        </div>
+        <div class="vision">
+            <h2>Our Vision</h2>
+            <p>To become a global leader in next-generation automotive innovation, inspiring car enthusiasts and redefining the future of mobility.</p>
+        </div>
+    </section>
+
+    <!-- ===== Legacy Section ===== -->
+    <section class="legacy-section scroll-element">
+        <h2>Our Legacy</h2>
+        <p>
+            Founded by a group of passionate automobile enthusiasts, Midnight Motors started as a dream to build something extraordinary. 
+            Over the years, our team has expanded into a hub of creative minds, engineers, and designers working together to bring ideas to life.
+        </p>
+    </section>
+
+    <!-- ===== Team Section ===== -->
+    <section class="team-section scroll-element">
+        <h2>Our Core Team</h2>
+        <div class="team-container">
+            <div class="team-card">
+                <img src="/Project/Images/Devloper Detail /hero Devloper.png" alt="Founder">
+                <h3>Rudra Rana</h3>
+                <p>Founder & Lead Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <p>&copy; 2025 Midnight Motors.</p>
+        <p>Designed by <span>Rudra</span>.</p>
+        <div>
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <!-- ===== Scroll Animation JS ===== -->
+    <script>
+        const scrollElements = document.querySelectorAll('.scroll-element');
+        const elementInView = (el, dividend = 1.25) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+        };
+        const displayScrollElement = (el) => el.classList.add('visible');
+        const hideScrollElement = (el) => el.classList.remove('visible');
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el)) displayScrollElement(el);
+                else hideScrollElement(el);
+            });
+        };
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation);
+    </script>
+</body>
+</html>

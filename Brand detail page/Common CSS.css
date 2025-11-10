@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding: 120px 8%;
+  min-height: 100vh;
+}
+.hero img {
+  width: 320px;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+.hero-text h1 {
+  font-size: 8rem;
+  color: #C2F9BB;
+}
+.hero-text p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+/* Content */
+.content {
+  width: 100%;
+  padding: 2rem 5%;
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: auto;
+}
+.content h3{
+  font-size: 3rem;
+}
+.content h2 {
+  font-size: 2rem;
+  color: #C2F9BB;
+  margin-bottom: 1rem;
+}
+.content p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+/* Specs Section */
+.specs {
+  margin-top: 2rem;
+  background: #000000;
+  padding: 2.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.specs h3 {
+  color: #C2F9BB;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+.specs ul li {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+.specs img {
+  width: 350px;
+  height: auto;
+  border-radius: 8px;
+} 
+
+/* Gallery */
+.gallery {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  padding: 1.5rem;
+  text-align: center;
+  color: #aaa;
+  margin-top: 3rem;
+}
+footer a {
+  margin: 0 0.5rem;
+  color: #aaa;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #fff;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text h1, 
+.hero-text p {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.gallery img {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.gallery img:nth-child(1) { animation-delay: 0.2s; }
+.gallery img:nth-child(2) { animation-delay: 0.4s; }
+.gallery img:nth-child(3) { animation-delay: 0.6s; }
+.gallery img:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animation delays */
+  .stagger-container .scroll-animate {
+    transition-delay: 0s;
+  }
+  .stagger-container .scroll-animate.visible:nth-child(1) { transition-delay: 0.2s; }
+  .stagger-container .scroll-animate.visible:nth-child(2) { transition-delay: 0.4s; }
+  .stagger-container .scroll-animate.visible:nth-child(3) { transition-delay: 0.6s; }
+  .stagger-container .scroll-animate.visible:nth-child(4) { transition-delay: 0.8s; }
+
+
+/* Specs image hover effect */
+.specs img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Car model hover effect */
+.scroll-animate.model-flex:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Popular model container hover effect */
+.scroll-animate.model-flex:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+/* All car images hover effect */
+.model-image:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Management - Midnight Motors</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(90deg, #0f0f0f, #1a1a1a);
+      border-bottom: 2px solid #c2f9bb;
+      box-shadow: 0 0 20px rgba(194, 249, 187, 0.15);
+      animation: fadeDown 1s ease forwards;
+    }
+
+    header h1 {
+      color: #c2f9bb;
+      font-size: 2.8rem;
+      margin: 0;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(194,249,187,0.5);
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 3rem auto;
+      background-color: #141414;
+      padding: 2.5rem;
+      border-radius: 15px;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 0.9rem;
+      background: #1c1c1c;
+      color: white;
+      border: 1px solid #333;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #c2f9bb;
+      box-shadow: 0 0 10px rgba(194,249,187,0.3);
+    }
+
+    input[type="file"] {
+      color: white;
+    }
+
+    button {
+      padding: 0.9rem;
+      background: linear-gradient(90deg, #c2f9bb, #aaf59b);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(194,249,187,0.4);
+    }
+
+    .search-bar {
+      margin-top: 2.5rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 0.9rem;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .search-bar input:focus {
+      border-color: #c2f9bb;
+      box-shadow: 0 0 10px rgba(194,249,187,0.3);
+    }
+
+    .brand-list {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.8rem;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .brand-card {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(194,249,187,0.05);
+      position: relative;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 0 25px rgba(194,249,187,0.2);
+    }
+
+    .brand-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: 0.4s ease;
+    }
+
+    .brand-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .brand-card h3 {
+      color: #c2f9bb;
+      margin: 0.7rem 0 0.3rem;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .brand-card p {
+      color: #bbb;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: #ff5555;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 2.5rem;
+      color: #c2f9bb;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+      transform: scale(1.05);
+    }
+    .uploadBox {
+      border: 2px dashed #c2f9bb;
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      background: #101010;
+    }
+    .uploadBox:hover {
+      border-style: solid;
+      box-shadow: 0 0 25px rgba(194,249,187,0.3);
+      transform: scale(1.03);
+    }
+    .uploadBox span {
+      font-size: 2.5rem;
+      color: #c2f9bb;
+    }
+    .uploadBox p {
+      color: #aaa;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manage Car Brands</h1>
+  </header>
+
+  <div class="container">
+    <form id="brandForm">
+      <input type="text" id="brandName" placeholder="Enter Brand Name" required />
+      <textarea id="brandDetails" placeholder="Enter Brand Details" required></textarea>
+      <div class="uploadBox" id="brandUploadBox">
+        <span>+</span>
+        <p>Click to upload image</p>
+      </div>
+      <input type="file" id="brandImage" accept="image/*" style="display:none;" required />
+      <button type="submit">Add Brand</button>
+    </form>
+
+    <div class="search-bar">
+      <input type="text" id="searchBox" placeholder="Search Brand..." />
+    </div>
+
+    <div class="brand-list" id="brandList"></div>
+
+    <a href="admin.html" class="back-link">← Back to Admin Panel</a>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedBrands = JSON.parse(localStorage.getItem("brands")) || [];
+      const brandSelect = document.getElementById("brandSelect");
+      savedBrands.forEach(b => {
+        const opt = document.createElement("option");
+        opt.value = b.name;
+        opt.textContent = b.name;
+        brandSelect.appendChild(opt);
+      });
+    });
+
+    const modelForm = document.getElementById('modelForm');
+    const modelList = document.getElementById('modelList');
+    const searchBox = document.getElementById('searchBox');
+    let models = [];
+
+    const uploadBox = document.getElementById('modelUploadBox');
+    const modelImageInput = document.getElementById('modelImage');
+    uploadBox.addEventListener('click', () => modelImageInput.click());
+    modelImageInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        uploadBox.innerHTML = `<p>${e.target.files[0].name}</p>`;
+      }
+    });
+
+    modelForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const brand = document.getElementById('brandSelect').value;
+      const name = document.getElementById('modelName').value;
+      const details = document.getElementById('modelDetails').value;
+      const photo = modelImageInput.files[0];
+      const imageURL = URL.createObjectURL(photo);
+
+      const model = { brand, name, details, imageURL };
+      models.push(model);
+      renderModels();
+      modelForm.reset();
+      uploadBox.innerHTML = `<span>+</span><p>Click to upload image</p>`;
+    });
+
+    function renderModels(filter = "") {
+      modelList.innerHTML = "";
+      models
+        .filter((m) => m.name.toLowerCase().includes(filter.toLowerCase()))
+        .forEach((m, index) => {
+          const div = document.createElement("div");
+          div.className = "model-card";
+          div.innerHTML = `
+            <button class="delete-btn" onclick="deleteModel(${index})">×</button>
+            <img src="${m.imageURL}" alt="${m.name}">
+            <h3>${m.brand} - ${m.name}</h3>
+            <p>${m.details}</p>
+          `;
+          modelList.appendChild(div);
+        });
+    }
+
+    function deleteModel(index) {
+      models.splice(index, 1);
+      renderModels(searchBox.value);
+    }
+
+    searchBox.addEventListener("input", (e) => {
+      renderModels(e.target.value);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devloper Details</title>
+    <link rel="stylesheet" href="devloper detail.css">
+</head>
+<body>
+    <!-- Navigation Section -->
+    <nav class="navigation">
+        <ul>
+            <li><a href="/Project/HOME page/home page.html">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="/Project/News/Trends/News-Trends.html">News/Trends</a></li>
+            <li><a href="/Project/Devloper detail page/devloper detail.html">Devloper Details</a></li>
+            <li><a href="/Project/Login-Registration/Login.html">Login / Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section scroll-element">
+        <img src="/Project/Images/Devloper Detail /hero Devloper.png" alt="Car Guy" loading="lazy">
+        <div class="info-text">
+            <h3>Hi, I am</h3>
+            <h1>RUDRA</h1>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section scroll-element">
+        <h1>About Me</h1>
+        <p>My name is Rudrarajsinh Rana, but most people call me Rudra...</p>
+    </div>
+
+    <!-- Qualification Section -->
+    <div class="Qualification scroll-element">
+        <div class="Darshan">
+            <img src="/Project/Images/Devloper Detail /Darshan logo copy.png" alt="Darshan Logo">
+            <h2>Darshan University</h2>
+            <p>During my Diploma at Darshan, I built a strong foundation in coding under the guidance of experienced instructors. While my marks were average in some subjects, I focused on understanding the practical applications and kept a solid grasp on the fundamentals. Additionally, I developed skills in design and logic building, which laid the groundwork for my future projects and passion in technology.</p>
+        </div>
+        <div class="Marwadi">
+            <img src="/Project/Images/Devloper Detail /Marwadi logo copy.png" alt="Marwadi Logo">
+            <h2>Marwadi University</h2>
+            <p>I am currently pursuing BTech in Computer Science and Engineering at Marwadi University. Many of the concepts and courses here build upon the foundation I developed during my Diploma at Darshan. Because my basics were strong, I am able to grasp the advanced topics with confidence and stand out in my coursework.</p>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="projects scroll-element">
+        <h1>Projects</h1>
+        <div class="project-card">
+            <div style="display:flex; align-items:center; margin-bottom:10px;">
+                <img src="/Project/Images/Devloper Detail /Elevate logo.png" alt="Elevet Logo" style="width:200px; height:auto; margin-right:20px;">
+                <div style="height:100%; width:2px; background-color:#ccc; margin:0 20px;"></div>
+                <h2 style="font-size:3rem; margin:0;">Elevate</h2>
+            </div>
+            <p><strong>Elevate</strong> is a modern clothing website I built during my Diploma. It blends clean layouts, stylish designs, and basic e‑commerce features like product listings and cart simulation. This project helped me sharpen my skills in responsive design and gave me the confidence to bring creative ideas into a professional web layout.</p>
+        </div>
+        <div class="project-card">
+            <div style="display:flex; align-items:center; margin-bottom:10px;">
+                <img src="/Project/Images/Devloper Detail /Spice&Co logo.png" alt="Spice&Co Logo" style="width:200px; height:auto; margin-right:20px;">
+                <div style="height:100%; width:2px; background-color:#ccc; margin:0 20px;"></div>
+                <h2 style="font-size:3rem; margin:0;">Spice&Co</h2>
+            </div>
+            <p><strong>Spice&Co</strong> is a smart food ordering app I created using Flutter. It focuses on a smooth user experience with simple navigation and engaging UI. From browsing dishes to placing orders, the project showcases how design and functionality can come together to make food ordering fun and efficient.</p>
+        </div>
+    </div>
+
+    <!-- Website About Section -->
+    <div class="website-about scroll-element">
+        <h2>About This Website</h2>
+        <p>This website was created to showcase my passion for cars, web development, and creative design. It brings together my skills in HTML, CSS, and JavaScript to create an interactive and modern platform where car enthusiasts can explore, learn, and enjoy automotive content.</p>
+    </div>
+
+    <script src="/Project/Devloper detail page/devloper detail.JS"></script>
+    <script>
+        const scrollElements = document.querySelectorAll(".scroll-element");
+
+        const elementInView = (el, offset = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add("visible");
+        };
+
+        const hideScrollElement = (element) => {
+            element.classList.remove("visible");
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 100)) {
+                    displayScrollElement(el);
+                } else {
+                    hideScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener("scroll", () => {
+            handleScrollAnimation();
+        });
+
+        // Trigger on load
+        handleScrollAnimation();
+    </script>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Midnight Motors.</p>
+        <p>Designed by <span>Rudra</span>.</p>
+        <div>
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+</body>
+</html>

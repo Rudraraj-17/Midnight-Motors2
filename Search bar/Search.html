@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Midnight Motors | Car Brands</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .hero {
+        min-height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 60px 2% 20px 2%;
+    }
+
+    .hero img {
+        max-width: 80%;
+        width: auto;
+        max-height: 400px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        object-fit: contain;
+    }
+    .searchBar{
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Pulse animation on focus */
+    @keyframes pulse {
+        0% { box-shadow: 0 0 5px #C2F9BB; }
+        50% { box-shadow: 0 0 20px #C2F9BB; }
+        100% { box-shadow: 0 0 5px #C2F9BB; }
+    }
+
+    /* Scale-in animation on page load */
+    @keyframes scaleIn {
+        0% { transform: scale(0.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    #Bar {
+        width: 70%;
+        height: 100px;
+        padding: 5px 10px;
+        border-radius: 50px;
+        border: 1px solid #ffffff;
+        background-color: #111;
+        color: #fff;
+        font-size: 3rem;
+        outline: none;
+        align-items: center;
+        text-align: center;
+        animation: scaleIn 0.8s ease forwards;
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    #Bar:focus {
+        animation: pulse 1.5s ;
+        border-color: #C2F9BB;
+        transform: scale(1.005);
+    }
+    .Qualification {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .Qualification .CarBrand {
+        text-align: center;
+        border-radius: 15px;
+        padding: 1.5rem;
+        width: 40%; /* 3 cards per row */
+        max-width: 300px;
+        min-width: 250px;
+        height: 450px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #000000;
+    }
+
+    .Qualification .CarBrand:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(194,249,187,0.5);
+    }
+
+    .Qualification img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+    }
+
+    .Qualification h2 {
+        font-size: 1.5rem;
+        color: #C2F9BB;
+        margin-bottom: 0.5rem;
+    }
+
+    .Qualification p {
+        margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+    <div class="hero scroll-element">
+        <img src="/Project/Images/Midnight.png" alt="About Hero Image">
+    </div>
+  <!-- Search Section -->
+    <div class="searchBar">
+        <input type="text" id="Bar" name="value" placeholder="Search Car or Brand....">
+    </div>
+  <div class="Qualification scroll-element">
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/BMW logo-2.png" alt="BMW Logo">
+        <h2>BMW</h2>
+        <p>German luxury brand known for performance and engineering excellence.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/Ferrari logo-2.png" alt="Ferrari Logo">
+        <h2>Ferrari</h2>
+        <p>Italian sports car maker offering high-performance luxury vehicles.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/Jesko logo-2.png" alt="Jesko Logo">
+        <h2>Jesko</h2>
+        <p>Hypercar by Koenigsegg combining extreme speed and innovation.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/Land Rover logo-2.png" alt="Land Rover Logo">
+        <h2>Land Rover</h2>
+        <p>Durable off-road SUVs combining adventure and luxury.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/Mersced logo-2.png" alt="Mercedes-Benz Logo">
+        <h2>Mercedes-Benz</h2>
+        <p>Renowned for luxury, comfort, and innovation.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/Porsche logo-2.png" alt="Porsche Logo">
+        <h2>Porsche</h2>
+        <p>Luxury sports cars blending speed, design, and comfort.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/RR logo-2.png" alt="Rolls-Royce Logo">
+        <h2>Rolls-Royce</h2>
+        <p>Symbol of opulence, craftsmanship, and sophistication.</p>
+    </div>
+    <div class="CarBrand">
+        <img src="/Project/Images/CAR LOGOS/Volvo Logo-2.png" alt="Volvo Logo">
+        <h2>Volvo</h2>
+        <p>Leader in safety, design, and sustainable innovation.</p>
+    </div>
+</div>
+</body>
+<script>
+  const searchInput = document.getElementById("Bar");
+  const carCards = document.querySelectorAll(".CarBrand");
+
+  searchInput.addEventListener("input", function() {
+    const query = this.value.toLowerCase().trim();
+
+    carCards.forEach(card => {
+      const name = card.querySelector("h2").textContent.toLowerCase();
+
+      if (name.includes(query)) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
+</html>
