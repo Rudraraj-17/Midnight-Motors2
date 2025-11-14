@@ -220,18 +220,23 @@ body {
         <!-- Right side form -->
         <div class="card-right">
             <h1 class="welcome">Welcome</h1>
-            <form action="#" method="POST">
+            <form action="/Project/HOME page/home page.html" method="GET">
                 <div class="input-group">
                     <label for="username">Username or Email</label>
                     <input type="text" id="username" name="username" placeholder="Enter Username" required>
                 </div>
+
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter Password" required>
-                </div><br>
-                <div class="actions">
-                    <button type="submit" class="btn" href="/Project/HOME page/home page.html">Login</button>
                 </div>
+
+                <br>
+
+                <div class="actions">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+
                 <div class="create-account">
                     <p>New here? <a href="Registration.html">Create Account</a></p>
                 </div>
@@ -241,6 +246,33 @@ body {
 </div>
 
 <!-- Admin link at bottom right -->
-<a href="Admin.html" class="admin-link">Are you Admin?</a>
+<a href="Admin_login.html" class="admin-link">Are you Admin?</a>
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // Username Validation
+    if (username === "") {
+        alert("Please enter your username or email.");
+        e.preventDefault();
+        return;
+    }
+
+    // Password Validation
+    if (password === "") {
+        alert("Please enter your password.");
+        e.preventDefault();
+        return;
+    }
+
+    // Optional: Minimum password length
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        e.preventDefault();
+        return;
+    }
+});
+</script>
 </body>
 </html>

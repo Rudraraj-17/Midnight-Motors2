@@ -204,5 +204,57 @@ body {
         </div>
     </div>
 </div>
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    const fullName = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirm-password").value.trim();
+
+    // Full Name Validation
+    if (fullName === "") {
+        alert("Please enter your full name.");
+        e.preventDefault();
+        return;
+    }
+
+    // Email Validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "") {
+        alert("Please enter your email.");
+        e.preventDefault();
+        return;
+    }
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        e.preventDefault();
+        return;
+    }
+
+    // Password Validation
+    if (password === "") {
+        alert("Please enter a password.");
+        e.preventDefault();
+        return;
+    }
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        e.preventDefault();
+        return;
+    }
+
+    // Confirm Password Validation
+    if (confirmPassword === "") {
+        alert("Please confirm your password.");
+        e.preventDefault();
+        return;
+    }
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        e.preventDefault();
+        return;
+    }
+});
+</script>
 </body>
 </html>
