@@ -262,59 +262,65 @@
       });
     });
 
-    const modelForm = document.getElementById('modelForm');
-    const modelList = document.getElementById('modelList');
+    const brandForm = document.getElementById('brandForm');
+    const brandList = document.getElementById('brandList');
     const searchBox = document.getElementById('searchBox');
-    let models = [];
+    const uploadBox = document.getElementById('brandUploadBox');
+    const brandImageInput = document.getElementById('brandImage');
 
-    const uploadBox = document.getElementById('modelUploadBox');
-    const modelImageInput = document.getElementById('modelImage');
-    uploadBox.addEventListener('click', () => modelImageInput.click());
-    modelImageInput.addEventListener('change', (e) => {
+    let brands = [];
+
+    uploadBox.addEventListener('click', () => brandImageInput.click());
+
+    brandImageInput.addEventListener('change', (e) => {
       if (e.target.files.length > 0) {
         uploadBox.innerHTML = `<p>${e.target.files[0].name}</p>`;
       }
     });
 
-    modelForm.addEventListener('submit', (e) => {
+    brandForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const brand = document.getElementById('brandSelect').value;
-      const name = document.getElementById('modelName').value;
-      const details = document.getElementById('modelDetails').value;
-      const photo = modelImageInput.files[0];
+
+      const name = document.getElementById('brandName').value;
+      const details = document.getElementById('brandDetails').value;
+      const photo = brandImageInput.files[0];
+
+      if (!photo) return;
+
       const imageURL = URL.createObjectURL(photo);
 
-      const model = { brand, name, details, imageURL };
-      models.push(model);
-      renderModels();
-      modelForm.reset();
+      brands.push({ name, details, imageURL });
+      renderBrands();
+
+      brandForm.reset();
       uploadBox.innerHTML = `<span>+</span><p>Click to upload image</p>`;
     });
 
-    function renderModels(filter = "") {
-      modelList.innerHTML = "";
-      models
-        .filter((m) => m.name.toLowerCase().includes(filter.toLowerCase()))
-        .forEach((m, index) => {
-          const div = document.createElement("div");
-          div.className = "model-card";
+    function renderBrands(filter = '') {
+      brandList.innerHTML = '';
+
+      brands
+        .filter(b => b.name.toLowerCase().includes(filter.toLowerCase()))
+        .forEach((b, index) => {
+          const div = document.createElement('div');
+          div.className = 'brand-card';
           div.innerHTML = `
-            <button class="delete-btn" onclick="deleteModel(${index})">×</button>
-            <img src="${m.imageURL}" alt="${m.name}">
-            <h3>${m.brand} - ${m.name}</h3>
-            <p>${m.details}</p>
+            <button class="delete-btn" onclick="deleteBrand(${index})">×</button>
+            <img src="${b.imageURL}" alt="${b.name}">
+            <h3>${b.name}</h3>
+            <p>${b.details}</p>
           `;
-          modelList.appendChild(div);
+          brandList.appendChild(div);
         });
     }
 
-    function deleteModel(index) {
-      models.splice(index, 1);
-      renderModels(searchBox.value);
+    function deleteBrand(index) {
+      brands.splice(index, 1);
+      renderBrands(searchBox.value);
     }
 
-    searchBox.addEventListener("input", (e) => {
-      renderModels(e.target.value);
+    searchBox.addEventListener('input', (e) => {
+      renderBrands(e.target.value);
     });
 </script>
 </body>
